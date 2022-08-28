@@ -2,7 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BookList from '../views/BookList.vue'
+import ItemView from '../views/ItemView.vue'
+import UserView from '../views/UserView.vue'
+import NotFound from '../components/NotFound.vue'
 import BookDetail from '../components/BookDetail.vue'
+import UserProfile from '../components/UserProfile.vue'
+import UserPost from '../components/UserPost.vue'
 
 Vue.use(VueRouter)
 
@@ -30,11 +35,36 @@ const routes = [
     name: 'Book',
     component: BookDetail,
     props: route => ({
-      id: route.params.id,
+      id: Number(route.params.id),
       title: route.params.title,
       content: route.params.content
     })
   },
+  {
+    path: '/item/:id',
+    name: 'Item',
+    component: ItemView
+  },
+  {
+    path: '/user',
+    component: UserView,
+    children: [
+      {
+        path: '/profile',
+        component: UserProfile
+      },
+      {
+        path: '/post',
+        component: UserPost
+      },
+    ]
+  },
+  {
+    path: '*',
+    // redirect: '/',
+    name: 'NotFound',
+    component: NotFound
+  }
 ]
 
 const router = new VueRouter({

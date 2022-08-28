@@ -1,11 +1,13 @@
 <template>
-  <div id="app">
+  <div id="app" class="black-b">
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/book">BookList</router-link>
+      <router-link to="/book">BookList</router-link> |
+      <router-link to="/item/1">Item</router-link> |
+      <router-link to="/user">User</router-link>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -29,5 +31,9 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.black-b {
+  border: 1px solid black;
 }
 </style>
