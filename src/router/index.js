@@ -8,6 +8,7 @@ import NotFound from '../components/NotFound.vue'
 import BookDetail from '../components/BookDetail.vue'
 import UserProfile from '../components/UserProfile.vue'
 import UserPost from '../components/UserPost.vue'
+import HomeSubView from '../components/HomeSubView.vue'
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,10 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    components: {
+      default: HomeView,
+      sub: HomeSubView,
+    },
   },
   {
     path: '/about',
